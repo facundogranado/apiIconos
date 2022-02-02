@@ -22,12 +22,11 @@ public class PaisServiceImpl implements PaisService{
     private PaisRepository paisRepository;
     
     
-    
     @Override
-    public PaisDto save(PaisDto dto) {
-        PaisEntity entity = paisMapper.paisDto2Entity(dto);
+    public PaisDetailsDto save(PaisDetailsDto dto) {
+        PaisEntity entity = paisMapper.paisDetailsDto2Entity(dto);
         PaisEntity entitySv = paisRepository.save(entity);
-        PaisDto result = paisMapper.paisEntity2Dto(entitySv);
+        PaisDetailsDto result = paisMapper.paisEntity2DetailsDto(entitySv);
         return result;
                 
     }
@@ -46,12 +45,7 @@ public class PaisServiceImpl implements PaisService{
         paisRepository.deleteById(id);
     }
 
-    @Override
-    public List<PaisDetailsDto> getAllPaisesDetails() {
-        List<PaisEntity> entitis = paisRepository.findAll();
-        List<PaisDetailsDto> result = paisMapper.paisEntityList2DtoDetailsList(entitis);
-        return result;
-    }
+
 
     @Override
     public List<PaisDto> getPaisFilers(String name) {
@@ -65,6 +59,13 @@ public class PaisServiceImpl implements PaisService{
             List<PaisEntity> entitis = paisRepository.findAllByContinenteId(id);
             List<PaisDto> dtos = paisMapper.paisEntityList2DtoList(entitis);
         return dtos;
+    }
+
+    @Override
+    public PaisDetailsDto getPaisDetails(Long id) {
+        PaisEntity pais = paisRepository.getById(id);
+        PaisDetailsDto result = paisMapper.paisEntity2DetailsDto(pais);
+        return result;
     }
 
 

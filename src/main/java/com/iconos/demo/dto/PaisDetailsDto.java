@@ -20,8 +20,10 @@ public class PaisDetailsDto {
     
     private Long superficie;
     
+    private Long continenteId;
+    
     private ContinenteEntity continente;
     
-    private Set<IconBasicDto> icons = new HashSet<>();
+    private Set<IconDto> icons = new HashSet<>();
     
 }

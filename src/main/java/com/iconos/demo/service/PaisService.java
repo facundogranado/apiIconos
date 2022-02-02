@@ -6,15 +6,15 @@ import java.util.List;
 
 
 public interface PaisService {
-    public PaisDto save(PaisDto dto);
+    public PaisDetailsDto save(PaisDetailsDto dto);
     
     public List<PaisDto> getAllPaises();
     
     public void delete(Long id);
 
-    public List<PaisDetailsDto> getAllPaisesDetails();
-
     public List<PaisDto> getPaisFilers(String name);
     
     public List<PaisDto> getPaisFilers(Long id);
+
+    public PaisDetailsDto getPaisDetails(Long id);
 }

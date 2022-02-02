@@ -9,11 +9,20 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class IconMapper {
 
+    private PaisMapper paisMapper;
+    
+    @Autowired
+    public IconMapper(@Lazy PaisMapper paisMapper){
+        this.paisMapper=paisMapper;
+    }
+    
     public IconEntity iconBasicDto2Entity(IconBasicDto dto) {
 
         IconEntity result = new IconEntity();
@@ -45,6 +54,7 @@ public class IconMapper {
         result.setAltura(entity.getAltura());
         result.setHistoria(entity.getHistoria());
         result.setFechaCreacion(entity.getFechaCreacion());
+        result.setPaises(paisMapper.paisEntityList2DtoList(entity.getPaises()));
         
         return result;
     }

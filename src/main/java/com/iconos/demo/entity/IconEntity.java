@@ -23,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "iconos")
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE icon SET delete = true WHERE id=?")
+@SQLDelete(sql = "UPDATE iconos SET deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 public class IconEntity implements Serializable {
     

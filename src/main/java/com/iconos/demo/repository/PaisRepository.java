@@ -11,5 +11,4 @@ public interface PaisRepository extends JpaRepository<PaisEntity, Long>{
     public abstract List<PaisEntity> findAllByDenominacion(String name);
     public abstract List<PaisEntity> findAllByContinenteId(Long id);
     
-    
 }

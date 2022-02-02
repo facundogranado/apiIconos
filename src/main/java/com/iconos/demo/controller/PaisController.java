@@ -25,9 +25,9 @@ public class PaisController {
     private PaisService paisService;
     
     @PostMapping
-    public ResponseEntity<PaisDto> save(@RequestBody PaisDto dto){
+    public ResponseEntity<PaisDetailsDto> save(@RequestBody PaisDetailsDto dto){
         
-        PaisDto result = paisService.save(dto);
+        PaisDetailsDto result = paisService.save(dto);
         
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
@@ -39,10 +39,10 @@ public class PaisController {
         return ResponseEntity.ok(paises);
     }
     
-    @GetMapping("/detalles")
-    public ResponseEntity<List<PaisDetailsDto>> getAllPaisesDetails(){
-        List<PaisDetailsDto> paises = paisService.getAllPaisesDetails();
-        return ResponseEntity.ok(paises);
+    @GetMapping("/{id}")
+    public ResponseEntity<PaisDetailsDto> getPaisDetails(@PathVariable("id") Long id){
+        PaisDetailsDto pais = paisService.getPaisDetails(id);
+        return ResponseEntity.ok(pais);
     
     }
     
